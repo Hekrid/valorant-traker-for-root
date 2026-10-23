@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Riot sign-in (demo stand-in)</title>
+<style>
+  :root { color-scheme: dark; }
+  body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #10151c; color: #f2f2f2; font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 440px; margin: 16px; padding: 28px; background: #19202a; border: 1px solid #283039; border-radius: 14px; text-align: center; }
+  h1 { font-size: 20px; margin: 0 0 8px; }
+  p { color: #b9bcc4; margin: 0 0 18px; }
+  .tag { display: inline-block; margin-bottom: 14px; padding: 3px 10px; border-radius: 999px; background: rgba(255,70,85,.14); border: 1px solid rgba(255,70,85,.45); font-size: 12px; font-weight: 600; }
+  button { font: inherit; font-weight: 700; padding: 10px 18px; border: 0; border-radius: 8px; background: #ff4655; color: #fff; cursor: pointer; }
+  .done { display: none; }
+</style>
+</head>
+<body>
+<main>
+  <span class="tag">Demo stand-in</span>
+  <div id="ask">
+    <h1>Riot sign-in</h1>
+    <p>In the real app this step happens on Riot's own sign-in page (Riot Sign On). Valorant Tracker never sees the player's password; Riot only tells it which account signed in.</p>
+    <button id="go">Sign in as DemoPlayer#RT1</button>
+  </div>
+  <div id="done" class="done">
+    <h1>You're linked!</h1>
+    <p>Go back to the demo tab. It updates by itself in a few seconds.</p>
+  </div>
+</main>
+<script>
+  document.getElementById("go").addEventListener("click", function () {
+    try { localStorage.setItem("vt-demo-signed-in", "1"); } catch (e) {}
+    document.getElementById("ask").style.display = "none";
+    document.getElementById("done").style.display = "block";
+    setTimeout(function () { window.close(); }, 1500);
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Valorant Tracker" />
+    <title>Valorant Tracker</title>
+    <script>
+      // Local testing only: the dev server runs on these ports (set in server/.env) so it doesn't
+      // clash with GameHub (18080-18082) or the project on 8080-8082.
+      if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+        window.__rootDevConfig = { wsPort: 18180, httpPort: 18181, wsUpdatePort: 18182 };
+      }
+    </script>
+    <script type="module" crossorigin src="./assets/index-bXhIFFec.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-BJ7CQq2V.css">
+  </head>
+
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
