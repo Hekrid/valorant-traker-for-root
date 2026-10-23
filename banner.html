@@ -1,0 +1,79 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+html,body{margin:0}
+body{width:var(--w);height:var(--h);overflow:hidden;font-family:"Inter","Segoe UI",system-ui,sans-serif;color:#fff;position:relative;
+ background:radial-gradient(ellipse 45% 85% at 18% 45%, rgba(255,70,85,.22) 0%, transparent 70%),
+            radial-gradient(ellipse 45% 90% at 92% 100%, rgba(63,168,184,.18) 0%, transparent 70%),
+            linear-gradient(110deg,#161c25 0%,#10151c 55%,#0b0f15 100%)}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:calc(var(--h)*.1) calc(var(--h)*.1)}
+.slash{position:absolute;top:-10%;height:120%;width:calc(var(--h)*.06);background:#ff4655;opacity:.12;transform:skewX(-18deg)}
+.wrap{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:calc(var(--h)*.1)}
+.left{display:flex;align-items:center;gap:calc(var(--h)*.07)}
+.logo{width:calc(var(--h)*.42);height:calc(var(--h)*.42);filter:drop-shadow(0 16px 36px rgba(255,70,85,.3))}
+h1{margin:0;font-size:calc(var(--h)*.2);font-weight:900;letter-spacing:-.02em;line-height:1;text-transform:uppercase}
+h1 span{color:#ff4655}
+p{margin:calc(var(--h)*.035) 0 calc(var(--h)*.05);font-size:calc(var(--h)*.062);color:#c9ced8}
+.pills{display:flex;gap:calc(var(--h)*.02)}
+.pill{padding:calc(var(--h)*.014) calc(var(--h)*.034);border-radius:999px;background:rgba(255,70,85,.12);border:1.5px solid rgba(255,70,85,.4);font-size:calc(var(--h)*.042);font-weight:600;white-space:nowrap}
+.card{width:calc(var(--h)*.9);padding:calc(var(--h)*.045);border-radius:calc(var(--h)*.04);background:rgba(25,32,42,.92);border:1px solid #2a333e;box-shadow:0 20px 60px rgba(0,0,0,.45)}
+.card .head{display:flex;align-items:center;gap:calc(var(--h)*.035);margin-bottom:calc(var(--h)*.035)}
+.tier{width:calc(var(--h)*.11);height:calc(var(--h)*.11);display:grid;place-items:center}
+.tier::before{content:"";grid-area:1/1;width:72%;height:72%;transform:rotate(45deg);border-radius:4px;background:#c58df0}
+.tier b{grid-area:1/1;position:relative;color:#10141a;font-size:calc(var(--h)*.035)}
+.name{font-weight:800;font-size:calc(var(--h)*.05)}
+.sub{color:#8a93a3;font-size:calc(var(--h)*.032)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:calc(var(--h)*.018);margin-bottom:calc(var(--h)*.03)}
+.stats div{background:#121820;border:1px solid #27303b;border-radius:calc(var(--h)*.018);padding:calc(var(--h)*.022)}
+.stats strong{display:block;font-size:calc(var(--h)*.05)}
+.stats span{color:#8a93a3;font-size:calc(var(--h)*.028)}
+.m{display:flex;justify-content:space-between;align-items:center;padding:calc(var(--h)*.016) calc(var(--h)*.022);border-left:3px solid #3fa45b;background:rgba(63,164,91,.08);border-radius:4px;font-size:calc(var(--h)*.032);margin-top:calc(var(--h)*.012)}
+.m.l{border-left-color:#e0505d;background:rgba(224,80,93,.08)}
+.m em{font-style:normal;color:#8a93a3}
+</style></head><body>
+<div class="grid"></div>
+<div class="slash" style="left:6%"></div><div class="slash" style="left:9%;opacity:.06"></div>
+<div class="slash" style="right:4%;opacity:.07"></div>
+<div class="wrap">
+  <div class="left">
+    <svg class="logo" viewBox="0 0 64 64">
+  
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1f2733"/>
+      <stop offset="1" stop-color="#0f141b"/>
+    </linearGradient>
+    <linearGradient id="red" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#d93a48"/>
+      <stop offset="1" stop-color="#ff5a67"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="15" fill="url(#bg)"/>
+  
+  <g fill="none" stroke="#ff4655" stroke-width="3.2" stroke-linecap="round">
+    <path d="M38.67 13.68A19.5 19.5 0 0 1 50.32 25.33"/>
+    <path d="M38.67 13.68A19.5 19.5 0 0 1 50.32 25.33" transform="rotate(90 32 32)"/>
+    <path d="M38.67 13.68A19.5 19.5 0 0 1 50.32 25.33" transform="rotate(180 32 32)"/>
+    <path d="M38.67 13.68A19.5 19.5 0 0 1 50.32 25.33" transform="rotate(270 32 32)"/>
+  </g>
+  <g stroke="#ff4655" stroke-width="3.2" stroke-linecap="round">
+    <path d="M32 6v8"/><path d="M58 32h-8"/><path d="M32 58v-8"/><path d="M6 32h8"/>
+  </g>
+  
+  <rect x="22" y="34" width="5.5" height="9" rx="1.6" fill="#e8ecf2" opacity=".55"/>
+  <rect x="29.25" y="28" width="5.5" height="15" rx="1.6" fill="#e8ecf2" opacity=".8"/>
+  <rect x="36.5" y="21" width="5.5" height="22" rx="1.6" fill="url(#red)"/>
+</svg>
+    <div>
+      <h1>Valorant <span>Tracker</span></h1>
+      <p>Your community's Valorant stats, right inside Root.</p>
+      <div class="pills"><span class="pill">Rank &amp; matches</span><span class="pill">Community leaderboard</span><span class="pill">Top players</span></div>
+    </div>
+  </div>
+  <div class="card" id="card">
+    <div class="head"><span class="tier"><b>D2</b></span><div><div class="name">Player#EUW</div><div class="sub">Diamond 2 · Europe</div></div></div>
+    <div class="stats"><div><strong>1.24</strong><span>K/D</span></div><div><strong>65%</strong><span>Win rate</span></div><div><strong>236</strong><span>ACS</span></div></div>
+    <div class="m"><span><b>Win</b> &nbsp;Ascent</span><em>13–7 · 21/12/4</em></div>
+    <div class="m l"><span><b>Loss</b> &nbsp;Bind</span><em>11–13 · 16/14/5</em></div>
+  </div>
+</div>
+</body></html>
