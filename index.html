@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Valorant Tracker for Root</title>
+<meta name="description" content="Interactive mock of Valorant Tracker, an upcoming app that brings Valorant stats into Root communities.">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #0d1117;
+    --surface: #161c25;
+    --surface-2: #11161d;
+    --border: #283039;
+    --text: #f2f2f2;
+    --text-2: #c2c7d0;
+    --muted: #8a93a3;
+    --accent: #ff4655;
+    --accent-soft: rgba(255, 70, 85, .12);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 15% 0%, rgba(255, 70, 85, .14), transparent 70%),
+      radial-gradient(ellipse 50% 40% at 100% 30%, rgba(63, 168, 184, .08), transparent 70%),
+      var(--bg);
+    color: var(--text);
+    font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+
+  header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 0; flex-wrap: wrap; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 18px; color: var(--text); text-decoration: none; }
+  .brand img { width: 34px; height: 34px; }
+  nav { display: flex; gap: 18px; flex-wrap: wrap; }
+  nav a { color: var(--text-2); text-decoration: none; font-size: 15px; }
+  nav a:hover { color: var(--text); }
+
+  .hero { padding: 36px 0 20px; }
+  .hero h1 { margin: 0 0 12px; font-size: clamp(34px, 6vw, 56px); line-height: 1.05; font-weight: 900; letter-spacing: -.02em; text-transform: uppercase; }
+  .hero h1 span { color: var(--accent); }
+  .hero p { margin: 0; max-width: 680px; font-size: 18px; color: var(--text-2); }
+
+  .notice { display: flex; gap: 14px; margin: 26px 0; padding: 16px 18px; border: 1px solid rgba(255, 70, 85, .45); border-radius: 12px; background: var(--accent-soft); }
+  .notice b.icon { flex: none; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 15px; }
+  .notice p { margin: 0; color: var(--text); }
+  .notice p + p { margin-top: 6px; color: var(--text-2); font-size: 15px; }
+
+  .demo { border: 1px solid var(--border); border-radius: 14px; overflow: hidden; background: var(--surface); box-shadow: 0 24px 60px rgba(0, 0, 0, .45); }
+  .demo-bar { display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-bottom: 1px solid var(--border); background: var(--surface-2); font-size: 13px; color: var(--muted); }
+  .demo-bar i { width: 10px; height: 10px; border-radius: 50%; background: #3a4350; }
+  .demo-bar span { margin-left: 6px; }
+  .demo-bar .label { margin-left: auto; padding: 2px 9px; border-radius: 999px; background: var(--accent-soft); border: 1px solid rgba(255, 70, 85, .45); color: var(--text); font-weight: 600; }
+  .demo iframe { display: block; width: 100%; height: 760px; border: 0; background: #151c26; }
+  .demo-foot { margin: 10px 0 0; font-size: 14px; color: var(--muted); }
+
+  section { padding: 44px 0 0; }
+  h2 { margin: 0 0 16px; font-size: 26px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+  .card { padding: 18px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); }
+  .card h3 { margin: 0 0 6px; font-size: 17px; }
+  .card p { margin: 0; color: var(--text-2); font-size: 15px; }
+  .step { display: inline-grid; place-items: center; width: 26px; height: 26px; margin-bottom: 8px; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 800; font-size: 14px; }
+  ul.rules { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 8px 20px; }
+  ul.rules li { padding-left: 26px; position: relative; color: var(--text-2); }
+  ul.rules li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: 800; }
+  .status { padding: 18px; border-left: 3px solid var(--accent); background: var(--surface); border-radius: 0 12px 12px 0; color: var(--text-2); }
+  .status p { margin: 0; }
+  .status p + p { margin-top: 8px; }
+
+  footer { margin-top: 56px; padding: 24px 0 36px; border-top: 1px solid var(--border); color: var(--muted); font-size: 13px; }
+  footer p { margin: 0 0 8px; }
+
+  @media (max-width: 640px) {
+    .demo iframe { height: 680px; }
+    .hero p { font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="brand" href="./"><img src="logo.svg" alt="">Valorant Tracker</a>
+    <nav>
+      <a href="#demo">Demo</a>
+      <a href="#how">How it works</a>
+      <a href="#rules">Riot's rules</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h1>Valorant <span>Tracker</span></h1>
+    <p>Valorant stats for your community, right inside Root: each member's rank and recent matches, a leaderboard for the community, and Riot's official top-players ladder.</p>
+  </div>
+
+  <div class="notice" role="note">
+    <b class="icon" aria-hidden="true">!</b>
+    <div>
+      <p><strong>You're looking at a mock.</strong> This page is an interactive preview of Valorant Tracker, an app being built for communities on <a href="https://www.rootapp.com" rel="noopener">Root</a>. The finished app will run inside Root communities, not on this website.</p>
+      <p>Everything in the preview below is made-up sample data that lives in your browser. Nothing here connects to Riot's servers or to real players. The screens are the app's real interface, so it looks and works the way it will in Root.</p>
+    </div>
+  </div>
+
+  <div id="demo" class="demo">
+    <div class="demo-bar"><i></i><i></i><i></i><span>Root community · Valorant Tracker</span><b class="label">Sample data</b></div>
+    <iframe src="demo/index.html" title="Valorant Tracker interactive mock"></iframe>
+  </div>
+  <p class="demo-foot">Try it: press <b>Sign in with Riot</b>, then look through the Community and Top players tabs and tap a member. <a href="demo/index.html" target="_blank" rel="noopener">Open the mock full screen</a>.</p>
+
+  <section id="how">
+    <h2>How it works in Root</h2>
+    <div class="grid">
+      <div class="card"><span class="step">1</span><h3>Members opt in</h3><p>A member links their Riot account with Riot's own sign-in (Riot Sign On). The app never sees their password, and only members who link are ever shown.</p></div>
+      <div class="card"><span class="step">2</span><h3>Their stats appear</h3><p>Rank, the last ten matches (agent, map, score, K/D/A, ACS, headshot rate) and averages over the last twenty, from Riot's official API.</p></div>
+      <div class="card"><span class="step">3</span><h3>The community competes</h3><p>A leaderboard of linked members by rank, K/D, win rate, ACS or headshots, plus Riot's official ranked ladder for every region.</p></div>
+      <div class="card"><span class="step">4</span><h3>Members stay in control</h3><p>Pressing Unlink deletes everything the app stored about that member, straight away.</p></div>
+    </div>
+  </section>
+
+  <section id="rules">
+    <h2>Built to Riot's developer policies</h2>
+    <ul class="rules">
+      <li>Only Riot's official API, with a registered product key</li>
+      <li>Players opt in through Riot Sign On before their stats are shown</li>
+      <li>Unlinking deletes the player's data</li>
+      <li>No MMR or Elo estimates</li>
+      <li>No scouting of opponents before or during matches</li>
+      <li>No live in-game overlays or helpers</li>
+      <li>No betting or gambling of any kind</li>
+      <li>No Riot logos; the legal notice is shown in the app</li>
+    </ul>
+  </section>
+
+  <section id="status">
+    <h2>Status</h2>
+    <div class="status">
+      <p>Valorant Tracker is in development. The app is built and tested with a Riot development key: Riot ID lookup, regions, game content and the ranked ladder all work with live data.</p>
+      <p>Match history needs Riot's production key, which we're applying for now. Riot sign-in will replace the testing sign-in at the same time.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>Contact: <a href="mailto:OmniRootApp@proton.me">OmniRootApp@proton.me</a> · <a href="privacy.html">Privacy policy</a></p>
+    <p>Valorant Tracker isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games, VALORANT and all associated properties are trademarks or registered trademarks of Riot Games, Inc.</p>
+  </footer>
+</div>
+</body>
+</html>
